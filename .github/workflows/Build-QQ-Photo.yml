@@ -48,7 +48,9 @@ jobs:
           content = helper.read_text(encoding='utf-8')
           marker = 'Set<String> newDrawables = new TreeSet<>();'
           assert marker in content, 'Arcticons changed XMLCreator.java; check upstream format'
-          content = content.replace(marker, f'availableIcons.add("{name}");\n        '+marker, 1)
+          
+          content = content.replace(marker, f'availableIcons.add("{name}");\n        '+marker+'\n        newDrawables.add("qq_custom");', 1)
+
           helper.write_text(content, encoding='utf-8')
 
           # Put the photo at the beginning of the icon picker, under 'New'.
